@@ -1,0 +1,177 @@
+{% extends 'root.html' %}
+
+    {% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'css/dashboard.css' %}">
+    <div class="header">
+        <img src="{% static 'images/logo.png'%}" alt="">
+        <div class=menu-items>
+            <ul >
+                <li><a href="" class="nav-link">Home</a></li>
+                <li><a href="" class="nav-link">Support</a></li>
+                <li><a href="" class="nav-link">Data Bundles</a></li>
+                <li><a href="{% url 'transaction' %}" class="nav-link">Transaction</a></li>
+                <li class="log" class="nav-link"><a href="{%url 'logout' %}">Logout</a></li>
+            </ul>
+        </div>
+
+        <div class="logout">
+            <a href="{%url 'logout' %}">Logout</a>
+        </div>
+
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      
+    </div>
+    
+   
+    <div class="welcome">
+        <small>welcome to Samedeals {{request.user.username}} <small>
+    </div>
+
+    <div class="information">
+        <div class="info">
+            <p>Wallet Balance</p>
+            <p> N {{request.user.balance}}</p>
+            <a href="{%url 'initiate_payment' %}">Fund Wallet</a>
+        </div>
+
+        <div class="info">
+            <p>Active</p>
+            <a href="#">Account Status</a>
+        </div>
+
+        <div class="info">
+            <p>08000000000</p>
+            <a href="#">Manager's Contact</a>
+        </div>
+        
+
+    </div>
+    
+    
+   
+        
+    <div class="body">
+        <div class="a">
+                <h1>Quick Airtime Top-UP:</h1>
+                <div class="form">
+                  <form action=""  method="POST">
+                    {% csrf_token %}
+                    {{form}}
+                    
+                    <button class="btn1 btn-success" type="submit">Submit form</button>
+                    </div>
+
+                  </form>
+                </div>
+               
+        </div>
+
+        <div class="b">
+          <div class="htext">
+            <h1>Our Exclusive Services</h1>
+          </div>
+        
+          <div class="head1">
+        
+            <div class="subHeader2">
+              <img src="{% static 'images/9mobile.png'%}" alt="">
+              <h3>9MOBILE DATA</h3>
+              <a   class="link"href="{%url 'register' %}">
+                <p>ORDER NOW</p>
+              </a>
+              
+            </div>
+        
+        
+            <div class="subHeader2">
+              <img src="{% static 'images/airtel.png'%}" alt="">
+              <h3>AIRTEL DATA</h3>
+              <a class="link" href="{%url 'register' %}">
+                <p>ORDER NOW</p>
+              </a>
+            </div>
+
+            <div class="subHeader2">
+              <img src="{% static 'images/airtel.png'%}" alt="">
+              <h3>AIRTEL DATA GIFTING</h3>
+              <a class="link" href="{%url 'register' %}">
+                <p>ORDER NOW</p>
+              </a>
+            </div>
+        
+        
+        
+            <div class="subHeader2">
+              <img src="{% static 'images/mtn.png'%}" alt="">
+              <h3>MTN DATA</h3>
+              <a class="link" href="{%url 'register' %}">
+                <p>ORDER NOW</p>
+              </a>
+            </div>
+
+            <div class="subHeader2">
+              <img src="{% static 'images/mtn.png'%}" alt="">
+              <h3>MTN DATA GIFTING</h3>
+              <a class="link" href="{%url 'register' %}">
+                <p>ORDER NOW</p>
+              </a>
+            </div>
+        
+        
+            <div class="subHeader2">
+              <img src="{% static 'images/glo.png'%}" alt="">
+              <h3>GLO DATA</h3>
+              <a  class="link"href="{%url 'register' %}">
+                <p>ORDER NOW</p>
+              </a>
+            </div>
+
+            <div class="subHeader2">
+              <img src="{% static 'images/bill.png'%}" alt="">
+              <h3>ELECTRICITY BILLS</h3>
+              <a  class="link"href="{%url 'register' %}">
+                <p>ORDER NOW</p>
+              </a>
+            </div>
+            <div class="subHeader2">
+              <img src="{% static 'images/utility.jpg'%}" alt="">
+              <h3>CABLE SUB.</h3>
+              <a  class="link"href="{%url 'register' %}">
+                <p>ORDER NOW</p>
+              </a>
+            </div>
+            
+        
+        
+          </div>
+        
+        
+           
+        </div>
+    </div>
+        
+    </div>
+
+    <footer>
+      <div class="footer">
+        <h1>SameDeal</h1>
+    
+        <p>@ 2022 SameDeal. All rights reserved</p>
+      </div>
+    </footer>
+    
+
+   
+   
+    <script src="{% static 'JS/dash.js' %}"></script>
+
+
+    {% endblock content %}
+  
+
+

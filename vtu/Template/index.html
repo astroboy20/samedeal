@@ -1,0 +1,246 @@
+{% extends 'root.html' %}
+{% load crispy_forms_tags%}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{%static 'css/main.css' %}">
+<header class="header">
+  <img class="headerimg" src="{%static 'images/logo.png'%}" alt="">
+  <div class=menu-items>
+    <ul>
+      <li><a href="">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#services" class="nav-link">Services</a></li>
+      <li><a href="#databundle" class="nav-link">Data Bundle</a></li>
+      <li><a href="#contactus" class="nav-link">Contact Us</a></li>
+      <li><a href="{%url 'register' %}" class="nav-link">Get Started</a></li>
+    </ul>
+  </div>
+  <div class="hamburger">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </div>
+
+</header>
+
+<!---first section-->
+<section class="section">
+
+  <div class="text">
+    <h1>Only High Quality Services <br /> Welcome to Same Deal ...</h1>
+    <p>We offer instant recharge of Airtime, Databundle, <br /> CableTV (DStv, GOtv & Startimes), Electricity <br />
+      Bill Payment and Airtime to Cash.</p>
+
+    <a href="{%url 'register' %}" class="btn">Get Started</a>
+  </div>
+  <div class="img">
+    <img src="{% static 'images/home.svg' %}" alt="home" />
+  </div>
+
+</section>
+
+<!---second section-->
+<section class="section1" id="about">
+
+  <img src="{% static 'images/shared.svg' %}" alt="people" />
+
+  <div class="text">
+    <h1>Who We Are</h1>
+    <p>We offer instant recharge of Databundle, Airtime, Cable TV <br>(DStv, GOtv & Startimes), Electricity Bill
+      payment, Airtime to Cash.</p>
+  </div>
+</section>
+
+<!---third section-->
+<section class="section2">
+
+  <div class="text">
+    <h1>Fast and Reliable</h1>
+    <p>Our customer service is just a click away, don't hesitate to <br /> consult us. Our Customer service is always
+      available</p>
+  </div>
+
+
+  <img src="{% static 'images/speed.svg' %}" alt="people" />
+
+
+</section>
+
+<section class="section3" id="services">
+  <div class="head">
+    <h1>Our Services</h1>
+    <p>Electronic vending of data and airtime</p>
+  </div>
+
+  <div class="head1">
+
+    <div class="subHeader">
+      <img src="{% static 'images/idea.png'%}" alt="">
+      <a href="{%url 'register' %}">
+        <h2>Buy Cheap Data Online</h2>
+      </a>
+      <p>Buy cheap mobile data at an <br /> affordable rate. Mighty data.</p>
+    </div>
+
+
+    <div class="subHeader">
+      <img src="{% static 'images/phone.png'%}" alt="">
+      <a href="{%url 'register' %}">
+        <h2>Buy Airtime</h2>
+      </a>
+      <p>Buy cheap airtime at an <br /> affordable rate. Mighty airtime.</p>
+    </div>
+
+
+
+    <div class="subHeader">
+      <img src="{% static 'images/tv-monitor.png'%}" alt="">
+      <a href="{%url 'register' %}">
+        <h2>Cable Sub.</h2>
+      </a>
+      <p>Pay for your DSTV, GOTV, Startimes.</p>
+    </div>
+
+
+    <div class="subHeader">
+      <img src="{% static 'images/tablet.png'%}" alt="">
+      <a href="{%url 'register' %}">
+        <h2>Pay Utility Bills</h2>
+      </a>
+      <p>Pay your utility bills online</p>
+    </div>
+
+
+  </div>
+
+</section>
+
+<section class="section5" id="databundle">
+  <div class="htext">
+    <h1>Our Exclusive Data Plan</h1>
+    <p>check out our cheap and affordable data plans.</p>
+  </div>
+
+  <div class="head1">
+
+    <div class="subHeader2">
+      <img src="{% static 'images/9mobile.png'%}" alt="">
+      <h3>9MOBILE DATA</h3>
+      <a   class="link"href="{%url 'register' %}">
+        <p>ORDER NOW</p>
+      </a>
+      
+    </div>
+
+
+    <div class="subHeader2">
+      <img src="{% static 'images/airtel.png'%}" alt="">
+      <h3>AIRTEL DATA</h3>
+      <a class="link" href="{%url 'register' %}">
+        <p>ORDER NOW</p>
+      </a>
+    </div>
+
+
+
+    <div class="subHeader2">
+      <img src="{% static 'images/mtn.png'%}" alt="">
+      <h3>MTN DATA</h3>
+      <a class="link" href="{%url 'register' %}">
+        <p>ORDER NOW</p>
+      </a>
+    </div>
+
+
+    <div class="subHeader2">
+      <img src="{% static 'images/glo.png'%}" alt="">
+      <h3>GLO DATA</h3>
+      <a  class="link"href="{%url 'register' %}">
+        <p>ORDER NOW</p>
+      </a>
+    </div>
+
+
+  </div>
+
+
+   
+</div>
+</section>
+
+<!---section 6---->
+  
+  
+  <section class="section6" id="contactus">
+    <div class="header6">
+      <h1>Keep In Touch</h1>
+      <p>Fast Mobile Deals offers the best deals when it comes <br/> to Internet Data Subscriptions,Airtime To cash, Airtime VTU, Bills & <br/> TV payments like GOTV, DSTV & STARTIMES.</p>
+  </div>
+
+  <form id="myForm" class="form" method="POST">
+
+    <div class="message">
+      {% if messages %}
+          {% for message in messages %}
+          <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+              {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+              {{ message }}
+          </li>
+          {% endfor %}
+      </ul>
+      {% endif %}
+
+    </div>
+    
+    {% csrf_token %}
+    {{form | crispy}}
+
+    <button type="submit" class="btn1 btn-success">Submit</button>
+  </form>
+  </div>
+</section>
+
+
+
+
+
+
+<footer>
+  <div class="footer">
+    <h1>SameDeal</h1>
+
+    <ul class="list">
+
+      <li class="listItems">
+        <a href="#" class="link"> Home</a>
+      </li>
+
+      <li class="listItems">
+        <a href="#about" class="link"> About</a>
+      </li>
+
+      <li class="listItems">
+        <a href="#services" class="link"> Services</a>
+      </li>
+
+      <li class="listItems">
+        <a href="#databundle" class="link"> Data Bundle</a>
+      </li>
+
+      <li class="listItems">
+        <a href="#contactus" class="link"> Contact Us</a>
+      </li>
+
+      <li class="listItems">
+        <a href="{%url 'register' %}" class="link"> Get Started</a>
+      </li>
+
+    </ul>
+
+    <p>@ 2022 SameDeal. All rights reserved</p>
+  </div>
+</footer>
+
+
+
+{% endblock content%}
