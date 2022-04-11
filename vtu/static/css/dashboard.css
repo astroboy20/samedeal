@@ -7,23 +7,12 @@
     .header{
         background-color: #000;
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        padding: 0 6%;
-    }
-    .log{
-        display: none;
-    }
-    .hamburger1{
-        display: none;
-    }
-    .header-img{
-        display: flex;
         justify-content: space-between;
-        align-items: center;
+        padding: 0 3%;
     }
     .header img{
-        width: 10%; 
+        width: 10%;
     }
     .dash-header{
         display: flex;
@@ -136,6 +125,9 @@
     .head1 img{
         width: 20%;
 
+    }
+    .b h1{
+        text-align: center;
     }
     .subheader2 a{
         background-color: #00BF1C;

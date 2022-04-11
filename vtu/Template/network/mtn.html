@@ -1,17 +1,23 @@
-<div class="body">
+{% extends 'root.html' %}
+{% load crispy_forms_tags%}
+{% load static %}
+{% block content %}
+{% load static %}
+<div class="body container">
     <div class="a">
             <h1>Quick Data Top-UP:</h1>
             <div class="form">
-              <form action=""  method="POST">
+              <form method="POST" validate>
                 {% csrf_token %}
-                
 
-                {{form}}
+               {{network_form | crispy}}
                 
                 <button class="btn1 btn-success" type="submit">Submit form</button>
-                </div>
+               
 
               </form>
             </div>
            
     </div>
+
+    {% endblock content%}

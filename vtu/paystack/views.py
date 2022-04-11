@@ -17,25 +17,18 @@ def initiate_payment(request:HttpRequest) -> HttpResponse:
             return render(request, 'paystack/make_payment.html', {'payment':payment, 'paystack_public_key':settings.PAYSTACK_PUBLIC_KEY})
     else:
         payment_form = PaymentForm()
-        return  render(request, 'paystack/initiate_payment.html', {'payment_form': payment_form})
+    return  render(request, 'paystack/initiate_payment.html', {'payment_form': payment_form})
 
 def verify_payment(request:HttpRequest, ref:str) -> HttpResponse:
     payment = get_object_or_404(Payment, ref=ref) 
     verified =  payment.verify_payment()
-    amount   = payment.verify_payment()
+    
     
     if verified:
-        messages.success(request, "Verification Successful" ) 
-        user_order =  Order( user = request.user, amount = amount)
-        request.user.balance += str(amount)
-        request.user.save()
-        user_order.is_settled = True
-        user_order.save()
-        context = { 'showModal' : True}
-        return render(request, 'dashboard.html', context)
+        messages.success(request, 'verification successful')
+    
         
-    else:   
-        context = { 'reasonForFailure' : 'Insufficient balance'}
+    else:  
         messages.error(request, "Verification failed")
-        return redirect('/transactions/')
+        return redirect( 'dashboard')
         

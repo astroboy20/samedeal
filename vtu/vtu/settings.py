@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'paystack',
     'network',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -143,7 +144,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 PAYSTACK_SECRET_KEY = "sk_test_4f031f875a84f5b20c87b63c14bc97ba194e9593"
 PAYSTACK_PUBLIC_KEY = "pk_test_6c65722d1b7446ac422f67990c7235eff7474f57"  
-
+FASTDEAL_API = 'FmD_test_AaCMsGmw9rkEqthI64HBW1czVX0pZd2DKOuUgnNf'
 AUTH_USER_MODEL = 'Users.CustomUser'
 
 #CRISPY_TEMPLATE_PACK = 'bootstrap5'
