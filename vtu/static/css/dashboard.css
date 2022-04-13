@@ -85,6 +85,7 @@
         color: #000;
         transition: 0.5 ease-out;
         font-size: 16px;
+        font-weight: bold;
     }
 
     .info a:hover{
@@ -394,3 +395,5 @@
         padding: 2%;
         text-align: center;
         color: aliceblue;
+    }
+}
