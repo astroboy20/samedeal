@@ -6,7 +6,8 @@ from .forms import PaymentForm
 from django.conf import settings
 from .models import Payment
 from django.contrib import messages
-from Users.models import Order
+
+
 # Create your views here.
 def initiate_payment(request:HttpRequest) -> HttpResponse:
     if request.method == "POST":
@@ -19,16 +20,17 @@ def initiate_payment(request:HttpRequest) -> HttpResponse:
         payment_form = PaymentForm()
     return  render(request, 'paystack/initiate_payment.html', {'payment_form': payment_form})
 
-def verify_payment(request:HttpRequest, ref:str) -> HttpResponse:
+def verify_payment(request:HttpRequest, ref: str) -> HttpResponse:
     payment = get_object_or_404(Payment, ref=ref) 
     verified =  payment.verify_payment()
     
     
     if verified:
-        messages.success(request, 'verification successful')
-    
+        messages.success(request, 'Payment successful')
+        request.user.balance = Payment.amount
+        return redirect ('dashboard')
         
     else:  
         messages.error(request, "Verification failed")
-        return redirect( 'dashboard')
+        return redirect( 'initiate_payment')
         

@@ -3,17 +3,30 @@
 {% block content %}
 
 <div class="container">
-    <div class="d-flex row justifycontent-center align-items-center py-md py-5">
-        <div class="col-12">
-            <form action="." method="POST">
-                <h4>Enter amount<h4>
-                {% csrf_token %}
-                {{payment_form | crispy}}
-                <input class="btn-success" type="submit" value="submit">
-
-            </form>
-        </div>
+    <div class="container">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+                {{ message }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
     </div>
+
+
+    <div class="mb-3">
+        <form action="." method="POST">
+            <h4>Enter amount<h4>
+            {% csrf_token %}
+            {{payment_form | crispy}}
+            <br>
+            <button class="btn btn-large btn-success"  type="submit" value="submit">Submit</button>
+        </form>
+      </div>
+
 </div>
 
 

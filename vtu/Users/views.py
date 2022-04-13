@@ -1,10 +1,12 @@
 from multiprocessing import context
 from django.shortcuts import render, redirect
 from .forms import CreationForm
+from paystack.models import Payment
 from django.contrib import messages
 from django.contrib.auth import authenticate, login 
 from django.contrib.auth import logout as django_logout
 from django.utils.safestring import mark_safe
+
 
 
 
@@ -64,7 +66,10 @@ def reset(request):
     return render(request, 'reset.html')    
 
 def dashboard(request):
-    balance = request.user.balance
+    
+    balance = Payment.amount
+
+    
     
     
     context = {

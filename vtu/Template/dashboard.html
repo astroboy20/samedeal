@@ -2,6 +2,7 @@
 
     {% block content %}
     {% load static %}
+    
     <link rel="stylesheet" href="{%static 'css/dashboard.css' %}">
     <div class="header">
         <img src="{% static 'images/logo.png'%}" alt="">
@@ -27,6 +28,18 @@
       
     </div>
     
+    <div class="container">
+      {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+          <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+              {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+              {{ message }}
+          </li>
+          {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
    
     <div class="welcome">
         <small>welcome to Samedeals {{request.user.username}} <small>
@@ -46,7 +59,7 @@
 
         <div class="info">
             <p>08000000000</p>
-            <a href="#">Manager's Contact</a>
+            <a href="#">Contact</a>
         </div>
         
 
@@ -60,11 +73,7 @@
                 <h1>Quick Airtime Top-UP:</h1>
                 <div class="form">
                   <form action=""  method="POST">
-                    {% csrf_token %}
-                    {{form}}
-                    
-                    <button class="btn1 btn-success" type="submit">Submit form</button>
-                    </div>
+                   
 
                   </form>
                 </div>
